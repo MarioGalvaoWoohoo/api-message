@@ -16,3 +16,6 @@ yarn-error.log
 /.idea
 /.vscode
 /.docker
+.env.production.aws
+.env.production.digitalOcean
+
