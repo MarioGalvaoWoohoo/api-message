@@ -1,4 +1,4 @@
-FROM php:8.2.2-fpm-alpine
+FROM php:8.2.2-fpm
 
 # Arguments defined in docker-compose.yml
 ARG user
