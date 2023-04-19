@@ -51,10 +51,10 @@ jobs:
         REMOTE_USER: ${{ secrets.SSH_USER }}
         TARGET: /home/${{ secrets.SSH_USER }}/projects/api-message
 
-    - name: Execute comands ssh
+    - name: Execute comands SSH
       uses: appleboy/ssh-action@master
       env:
-        USER_PASS: ${{ secrets.USER_PASS }}
+        USER_PASS: "${{ secrets.USER_PASS }}"
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
@@ -62,6 +62,8 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         envs: USER_PASS
         script: |
-          cd projects/api-message
-          echo $USER_PASS | sudo -S docker exec -T api-message composer install -q
+          cd ci-cd/
+          echo $USER_PASS | sudo -S docker-compose up -d
+          echo $USER_PASS | sudo -S docker-compose exec -T curso_api_cache composer install
+          echo $USER_PASS | sudo -S docker-compose exec -T curso_api_cache php artisan migrate --force
 
