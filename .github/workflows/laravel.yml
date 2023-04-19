@@ -44,7 +44,7 @@ jobs:
 
     - name: Execute comands ssh
       uses: appleboy/ssh-action@master
-      env:
+      with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
