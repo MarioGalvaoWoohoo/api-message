@@ -52,6 +52,7 @@ jobs:
         script: |
           cd projects/apiMessageExtensionGauge/
           git pull origin master
+          php artisan migrate
 
 
     # - name: Deploy to server
