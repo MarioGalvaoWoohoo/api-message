@@ -42,6 +42,15 @@ jobs:
       with:
         ref: master
 
+    - name: Deploy to server
+      uses: easingthemes/ssh-deploy@v2.2.11
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-rltgoDzvO --exclude .git --exclude .docker --exclude .github"
+        REMOTE_HOST: ${{ secrets.SSH_HOST }}
+        REMOTE_USER: ${{ secrets.SSH_USER }}
+        TARGET: /home/${{ secrets.SSH_USER }}/ci-cd
+
     - name: Execute comands ssh
       uses: appleboy/ssh-action@master
       env:
@@ -53,20 +62,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         envs: USER_PASS
         script: |
-          cd projects/apiMessageExtensionGauge/
-          git pull origin master
-          echo $USER_PASS | sudo -S docker exec -it app-gauge-message bash
-          php artisan migrate
-
-
-    # - name: Deploy to server
-    #   uses: easingthemes/ssh-deploy@v2.2.11
-    #   env:
-    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-    #     ARGS: "-rltgoDzvO --exclude .git --exclude .docker --exclude .github"
-    #     REMOTE_HOST: ${{ secrets.SSH_HOST }}
-    #     REMOTE_USER: ${{ secrets.SSH_USER }}
-    #     TARGET: /home/${{ secrets.SSH_USER }}/ci-cd
+          ls -la
 
     # - name: Configure AWS credentials
     #   uses: aws-actions/configure-aws-credentials@v1
