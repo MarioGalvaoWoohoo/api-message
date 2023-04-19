@@ -62,30 +62,6 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         envs: USER_PASS
         script: |
-          ls -la
+          cd projects/api-message
+          echo $USER_PASS | sudo -S docker exec T api-message composer install -q
 
-    # - name: Configure AWS credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: us-east-1
-
-    # - name: Login to Amazon ECR
-    #   id: login-ecr
-    #   uses: aws-actions/amazon-ecr-login@v1
-
-    # - name: Tag Docker image
-    #   id: tag-image
-    #   run: |
-    #     echo ${{ steps.login-ecr.outputs.registry }} # print ECR registry URL
-    #     docker tag my-image-name:latest ${{ steps.login-ecr.outputs.registry }}/my-image-name:latest
-
-    # - name: Push Docker image
-    #   id: push-image
-    #   run: |
-    #     docker push ${{ steps.login-ecr.outputs.registry }}/my-image-name:latest
-
-    # - name: Update AWS EC2 service
-    #   run: |
-    #     aws ecs update-service --cluster my-ecs-cluster --service my-service --force-new-deployment --region us-east-1 --image ${{ steps.login-ecr.outputs.registry }}/my-image-name:latest
