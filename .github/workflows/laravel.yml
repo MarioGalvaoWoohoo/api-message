@@ -50,7 +50,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
-          ls -la
+          git pull origin master
+
 
     # - name: Deploy to server
     #   uses: easingthemes/ssh-deploy@v2.2.11
