@@ -49,7 +49,7 @@ jobs:
         ARGS: "-rltgoDzvO --exclude .git --exclude .docker --exclude .github"
         REMOTE_HOST: ${{ secrets.SSH_HOST }}
         REMOTE_USER: ${{ secrets.SSH_USER }}
-        TARGET: /home/${{ secrets.SSH_USER }}/ci-cd
+        TARGET: /home/${{ secrets.SSH_USER }}/projects/api-message
 
     - name: Execute comands ssh
       uses: appleboy/ssh-action@master
