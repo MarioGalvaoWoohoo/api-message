@@ -55,7 +55,7 @@ jobs:
         script: |
           cd projects/apiMessageExtensionGauge/
           git pull origin master
-          echo $USER_PASS | sudo -S docker exec -it app-gauge-massage php artisan migrate
+          echo $USER_PASS | sudo -S docker exec -it app-gauge-message php artisan migrate
 
 
     # - name: Deploy to server
