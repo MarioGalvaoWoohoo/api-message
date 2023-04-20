@@ -64,6 +64,7 @@ jobs:
         script: |
           cd projects/api-message
           echo $USER_PASS | sudo -S docker ps
-          echo $USER_PASS | sudo -S docker-compose exec -T app-message composer install
+          echo $USER_PASS | sudo -S docker-compose exec -T app-message bash
+          ls
 
 
