@@ -63,4 +63,6 @@ jobs:
         envs: USER_PASS
         script: |
           cd projects/api-message
+          echo $USER_PASS | sudo -S docker ps
+          exit
           echo $USER_PASS | sudo -S docker-compose exec -T app-message composer install
