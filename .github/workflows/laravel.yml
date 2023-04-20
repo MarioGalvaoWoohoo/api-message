@@ -62,4 +62,5 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         envs: USER_PASS
         script: |
-          ssh -t -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd projects/api-message && echo $USER_PASS | sudo -S docker ps && echo $USER_PASS | sudo -S docker-compose exec -T app-message composer install"
+          cd projects/api-message
+          echo $USER_PASS | sudo -S docker-compose exec -T app-message composer install
