@@ -2,7 +2,7 @@ version: "3.7"
 services:
 
     app:
-        container_name: app-message-1
+        container_name: app-message
         build:
             args:
                 user: geowebmaster
@@ -15,11 +15,11 @@ services:
         volumes:
             - ./:/var/www
         networks:
-            - api-message-1
+            - api-message
 
 
     nginx:
-        container_name: nginx-message-1
+        container_name: nginx-message
         image: nginx:alpine
         restart: unless-stopped
         ports:
@@ -29,10 +29,10 @@ services:
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
-            - api-message-1
+            - api-message
 
     mysql:
-        container_name: db-message-1
+        container_name: db-message
         image: mysql:5.7.33
         restart: unless-stopped
         environment:
@@ -43,9 +43,9 @@ services:
         volumes:
             - ./.docker/mysql/dbdata:/var/lib/mysql
         ports:
-            - 3307:3306
+            - 3306:3306
         networks:
-            - api-message-1
+            - api-message
 
 
     # redis:
@@ -55,5 +55,5 @@ services:
     #         - api-message
 
 networks:
-    api-message-1:
+    api-message:
         driver: bridge
