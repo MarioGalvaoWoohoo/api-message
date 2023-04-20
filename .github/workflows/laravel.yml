@@ -54,7 +54,7 @@ jobs:
     - name: Execute comands SSH
       uses: appleboy/ssh-action@master
       env:
-        USER_PASS: "${{ secrets.USER_PASS }}"
+        USER_PASS: mario1986
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
@@ -64,9 +64,4 @@ jobs:
         script: |
           cd projects/api-message
           echo $USER_PASS | sudo -S docker ps
-          echo $USER_PASS | sudo -S docker-compose exec -T app-message bash
-          composer install
-          php artisan key:generate
-          php artisan migrate
-
-
+          echo $USER_PASS | sudo -S docker-compose exec -T app-message composer install
