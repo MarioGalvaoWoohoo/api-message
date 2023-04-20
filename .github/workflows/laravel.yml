@@ -62,7 +62,4 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         envs: USER_PASS
         script: |
-          cd projects/api-message
-          echo $USER_PASS | sudo -S docker ps
-          exit
-          echo $USER_PASS | sudo -S docker-compose exec -T app-message composer install
+          docker exec -it app-message /bin/bash -c "cd projects/api-message && sudo -u root composer install"
