@@ -46,6 +46,7 @@ jobs:
         push: true
         tags: geowebmaster/api-message:latest
 
+
   deploy-aws:
 
     needs: laravel-tests
