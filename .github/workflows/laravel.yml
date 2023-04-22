@@ -1,11 +1,9 @@
 name: Laravel CI
 
 on:
-  pull_request:
+  push:
     branches:
-      - develop
-
-
+      - master
 
 jobs:
   laravel-tests:
