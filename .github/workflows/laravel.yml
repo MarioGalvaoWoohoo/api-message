@@ -85,5 +85,6 @@ jobs:
         script: |
           cd /projects/api-message
           chmod +x script.sh
+          ls -la
           ./script.sh
 
