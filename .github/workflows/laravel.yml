@@ -87,5 +87,3 @@ jobs:
         script: |
           sh script.sh
           echo $USER_PASS | sudo -S docker ps
-
-
