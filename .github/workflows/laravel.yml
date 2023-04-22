@@ -83,7 +83,8 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         envs: USER_PASS
         script: |
-          cd /projects/api-message
+          cd projects/api-message
+          ls -la
           chmod +x script.sh
           ls -la
           ./script.sh
