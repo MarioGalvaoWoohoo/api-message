@@ -84,6 +84,5 @@ jobs:
         envs: USER_PASS
         script: |
           chmod +x script.sh
-          ./script.sh
-
+          ls -la
 
