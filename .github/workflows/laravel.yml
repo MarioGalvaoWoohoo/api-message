@@ -83,6 +83,6 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         envs: USER_PASS
         script: |
-          sh . script.sh
+          sh ./script.sh
           echo $USER_PASS | sudo -S docker ps
 
