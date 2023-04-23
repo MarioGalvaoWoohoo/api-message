@@ -84,7 +84,7 @@ jobs:
         envs: USER_PASS
         script: |
           cd projects/api-message
-          git pull origin main
+
 
 
 
