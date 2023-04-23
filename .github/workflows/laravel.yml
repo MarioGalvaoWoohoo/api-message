@@ -7,7 +7,7 @@ on:
 
 jobs:
   laravel:
-    name: CI
+    name: CI - Testando Feature/Unit
     runs-on: ubuntu-latest
 
     steps:
@@ -33,17 +33,6 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: php artisan test
 
-  Project-test:
-    name: Testando feature/Unit
-    runs-on: ubuntu-latest
-    needs: laravel
-
-    steps:
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: php artisan test
 
   # build-dockerhub:
   #   name: Build Docker
@@ -67,7 +56,7 @@ jobs:
 
   deploy:
 
-    needs: Project-test
+    needs: laravel
     runs-on: ubuntu-latest
 
     steps:
