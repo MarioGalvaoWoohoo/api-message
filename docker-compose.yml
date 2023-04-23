@@ -17,7 +17,6 @@ services:
         networks:
             - api-message
 
-
     nginx:
         container_name: nginx-message
         image: nginx:alpine
