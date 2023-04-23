@@ -12,5 +12,5 @@ use App\Models\{
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return response()->json(['message' => 'API - Message atualizada novamente'], 200);
+    return response()->json(['message' => 'API - Message com TDD e CI Github Action'], 200);
 });
