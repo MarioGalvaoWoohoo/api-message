@@ -18,4 +18,5 @@ yarn-error.log
 /.docker
 .env.production.aws
 .env.production.digitalOcean
+.scannerwork
 
