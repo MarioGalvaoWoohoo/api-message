@@ -33,27 +33,6 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: php artisan test
 
-
-  # build-dockerhub:
-  #   name: Build Docker
-  #   needs: laravel-tests
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-  #     - name: Login to Docker Hub
-  #       uses: docker/login-action@v1
-  #       with:
-  #         username: ${{ secrets.USER_DOCKER_HUB }}
-  #         password: ${{ secrets.PASS_DOCKER_HUB }}
-  #     - name: Build and push Docker image
-  #       uses: docker/build-push-action@v2
-  #       with:
-  #         context: .
-  #         push: false
-  #         tags: geowebmaster/api-message:latest
-
   deploy:
 
     needs: laravel
@@ -86,6 +65,25 @@ jobs:
         script: |
           cd projects/api-message
 
+  build-dockerhub:
+    name: Build Docker
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.USER_DOCKER_HUB }}
+          password: ${{ secrets.PASS_DOCKER_HUB }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: false
+          tags: geowebmaster/api-message:latest
 
 
 
