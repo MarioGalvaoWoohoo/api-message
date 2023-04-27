@@ -24,18 +24,18 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // $this->model->create([
-        //     'name' => 'Admin Gauge',
-        //     'email' => 'admin_gauge_message@gauge.com.br',
-        //     'password' => Hash::make('Gauge@2023'),
-        //     'session_id' => '0'
-        // ]);
-
         $this->model->create([
-            'name' => 'Mario George',
-            'email' => 'mario.galvao.woohoo@gmail.com.br',
-            'password' => Hash::make('M@rio1986'),
+            'name' => 'Admin Gauge',
+            'email' => 'admin_gauge_message@gauge.com.br',
+            'password' => Hash::make('Gauge@2023'),
             'session_id' => '0'
         ]);
+
+        // $this->model->create([
+        //     'name' => 'Mario George',
+        //     'email' => 'mario.galvao.woohoo@gmail.com.br',
+        //     'password' => Hash::make('M@rio1986'),
+        //     'session_id' => '0'
+        // ]);
     }
 }
